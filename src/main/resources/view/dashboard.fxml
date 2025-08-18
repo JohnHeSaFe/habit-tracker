@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
@@ -12,9 +13,9 @@
       <Insets />
    </opaqueInsets>
    <left>
-      <VBox prefHeight="720.0" prefWidth="610.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="720.0" prefWidth="640.0" BorderPane.alignment="CENTER">
          <children>
-            <VBox prefHeight="374.0" prefWidth="570.0">
+            <VBox prefHeight="360.0" prefWidth="1000.0">
                <children>
                   <Label text="Wed, 13 August">
                      <font>
@@ -26,19 +27,39 @@
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <VBox prefHeight="274.0" prefWidth="530.0" spacing="5.0">
+                  <VBox prefHeight="274.0" prefWidth="530.0">
                      <VBox.margin>
-                        <Insets top="20.0" />
+                        <Insets top="10.0" />
                      </VBox.margin>
                      <children>
-                        <CheckBox mnemonicParsing="false" prefHeight="42.0" prefWidth="530.0" text="Go to the gym">
+                        <CheckBox mnemonicParsing="false" prefHeight="38.0" prefWidth="600.0" text="Do something">
                            <font>
-                              <Font size="16.0" />
+                              <Font size="14.0" />
                            </font>
                         </CheckBox>
-                        <CheckBox mnemonicParsing="false" prefHeight="42.0" prefWidth="530.0" text="Read 10 pages">
+                        <CheckBox mnemonicParsing="false" prefHeight="38.0" prefWidth="600.0" text="Do something">
                            <font>
-                              <Font size="16.0" />
+                              <Font size="14.0" />
+                           </font>
+                        </CheckBox>
+                        <CheckBox mnemonicParsing="false" prefHeight="38.0" prefWidth="600.0" text="Do something">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </CheckBox>
+                        <CheckBox mnemonicParsing="false" prefHeight="38.0" prefWidth="600.0" text="Do something">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </CheckBox>
+                        <CheckBox mnemonicParsing="false" prefHeight="38.0" prefWidth="600.0" text="Do something">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </CheckBox>
+                        <CheckBox mnemonicParsing="false" prefHeight="38.0" prefWidth="600.0" text="Do something">
+                           <font>
+                              <Font size="14.0" />
                            </font>
                         </CheckBox>
                      </children>
@@ -47,6 +68,12 @@
                <padding>
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                </padding>
+            </VBox>
+            <VBox prefHeight="321.0" prefWidth="600.0">
+               <children>
+                  <Button fx:id="addHabitButton" mnemonicParsing="false" text="Add a habit" />
+                  <Label fx:id="labelExample" text="Label" />
+               </children>
             </VBox>
          </children>
          <BorderPane.margin>

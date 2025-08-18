@@ -1,0 +1,19 @@
+# Maven target directory
+/target/
+
+# VSCode settings
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Java compiled files
+*.class
+
+# JavaFX / FXML temporary files
+*.lst
+

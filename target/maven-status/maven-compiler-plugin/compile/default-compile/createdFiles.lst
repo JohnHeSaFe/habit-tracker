@@ -1,2 +1,6 @@
 com\john\habits\Main.class
+com\john\habits\model\Habit.class
 com\john\habits\controller\DashboardController.class
+com\john\habits\model\Frequency.class
+com\john\habits\model\HabitManager.class
+com\john\habits\model\HabitDAO.class

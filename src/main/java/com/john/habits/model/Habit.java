@@ -5,7 +5,14 @@ public class Habit {
     private String name;
     private Frequency frequency;
 
+    public Habit(int id, String name, Frequency frequency) {
+        this.id = id;
+        this.name = name;
+        this.frequency = frequency;
+    }
+
     public Habit(String name, Frequency frequency) {
+        this.id = -1;
         this.name = name;
         this.frequency = frequency;
     }
