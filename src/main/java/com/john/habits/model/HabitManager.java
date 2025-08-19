@@ -9,6 +9,20 @@ public class HabitManager {
 
     static {
         dao.getAllHabits().forEach(h -> habits.put(h.getId(), h));
+
+        if (habits.isEmpty()) {
+            Habit habit1 = new Habit("Drink water", Frequency.DAILY);
+            Habit habit2 = new Habit("Read a book", Frequency.DAILY);
+            Habit habit3 = new Habit("Go to gym", Frequency.DAILY);
+
+            int id1 = dao.insertHabit(habit1);
+            int id2 = dao.insertHabit(habit2);
+            int id3 = dao.insertHabit(habit3);
+
+            habits.put(id1, new Habit(id1, habit1.getName(), habit1.getFrequency()));
+            habits.put(id2, new Habit(id2, habit2.getName(), habit2.getFrequency()));
+            habits.put(id3, new Habit(id3, habit3.getName(), habit3.getFrequency()));
+        }
     }
 
     public static void addHabit(Habit habit) {
