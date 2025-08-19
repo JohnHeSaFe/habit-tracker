@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -24,17 +25,17 @@
                      <content>
                         <VBox prefHeight="333.0" prefWidth="760.0">
                            <children>
-                              <Label fx:id="todayLabel" text="Wed, 13 August">
+                              <Label prefHeight="66.0" prefWidth="362.0" text="Today's Habits">
                                  <font>
                                     <Font name="Segoe UI Black Italic" size="45.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="dailyCompletedLabel" prefHeight="35.0" prefWidth="246.0" text="0 / 6 tasks completed">
+                              <Label fx:id="todayDateLabel" text="Wednesday, 7 August">
                                  <font>
-                                    <Font size="24.0" />
+                                    <Font name="Segoe UI" size="25.0" />
                                  </font>
                               </Label>
-                              <VBox fx:id="dailyCheckListVBox" prefHeight="274.0" prefWidth="530.0">
+                              <VBox fx:id="dailyCheckListVBox" prefHeight="237.0" prefWidth="720.0">
                                  <VBox.margin>
                                     <Insets top="10.0" />
                                  </VBox.margin>
@@ -43,6 +44,9 @@
                                        <font>
                                           <Font size="14.0" />
                                        </font>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
                                     </CheckBox>
                                     <CheckBox mnemonicParsing="false" prefHeight="38.0" prefWidth="600.0" text="Do something">
                                        <font>
@@ -71,6 +75,12 @@
                                     </CheckBox>
                                  </children>
                               </VBox>
+                              <Label fx:id="dailyProgressLabel" prefHeight="35.0" prefWidth="246.0" text="0 / 6 tasks completed">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <ProgressBar fx:id="dailyProgressBar" prefHeight="40.0" prefWidth="294.0" progress="0.0" />
                            </children>
                            <padding>
                               <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
@@ -82,12 +92,7 @@
                   <Tab text="Untitled Tab" />
               </tabs>
             </TabPane>
-            <VBox prefHeight="170.0" prefWidth="760.0">
-               <children>
-                  <Button fx:id="addHabitButton" mnemonicParsing="false" text="Add a habit" />
-                  <Label fx:id="labelExample" text="Label" />
-               </children>
-            </VBox>
+            <VBox prefHeight="170.0" prefWidth="760.0" />
          </children>
          <BorderPane.margin>
             <Insets />
@@ -103,10 +108,10 @@
             <Insets />
          </BorderPane.margin>
          <padding>
-            <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </padding>
          <children>
-            <Label prefHeight="70.0" prefWidth="394.0" text="Habit Tracker">
+            <Label prefHeight="70.0" prefWidth="421.0" text="Jonji's Habit Tracker">
                <font>
                   <Font name="Segoe UI Black" size="40.0" />
                </font>
