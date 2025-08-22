@@ -1,8 +1,6 @@
 package com.john.habits.controller;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import com.john.habits.model.Frequency;
@@ -29,58 +27,47 @@ public class DashboardController {
     @FXML private VBox dailyCheckListVBox;
     @FXML private Label dailyProgressLabel;
     @FXML private ProgressBar dailyProgressBar;
+    private AtomicInteger dailyTasksCompletedCount;
+    private int dailyTasksCount;
 
     /* Weekly elements */
     @FXML private Label weeklyDateLabel;
     @FXML private VBox weeklyCheckListVBox;
     @FXML private Label weeklyProgressLabel;
     @FXML private ProgressBar weeklyProgressBar;
+    private AtomicInteger weeklyTasksCompletedCount;
+    private int weeklyTasksCount;
 
     /* Monthly elements */
     @FXML private Label monthlyDateLabel;
     @FXML private VBox monthlyCheckListVBox;
     @FXML private Label monthlyProgressLabel;
     @FXML private ProgressBar monthlyProgressBar;
-
-    private AtomicInteger dailyTasksCompletedCount;
-    private int dailyTasksCount;
+    private AtomicInteger monthlyTasksCompletedCount;
+    private int monthlyTasksCount;
+    
 
     @FXML
     public void initialize() {
-        loadAllHabitsCheckListsTabs();
+        loadAllHabitsTabs();
     }
 
-    private void loadAllHabitsCheckListsTabs() {
+    private void loadAllHabitsTabs() {
 
         /* Load daily section tab */
         loadDateLabel(Frequency.DAILY, dailyDateLabel);
-        loadHabitsChecklist(Frequency.DAILY, dailyCheckListVBox, dailyProgressLabel, dailyProgressBar);
+        loadProgressTracking(Frequency.DAILY, dailyTasksCompletedCount, dailyTasksCount, dailyProgressLabel, dailyProgressBar);
+        loadHabitsChecklist(Frequency.DAILY, dailyCheckListVBox, dailyTasksCompletedCount, dailyTasksCount, dailyProgressLabel, dailyProgressBar);
 
         /* Load weekly section tab */
         loadDateLabel(Frequency.WEEKLY, weeklyDateLabel);
-        loadHabitsChecklist(Frequency.WEEKLY, weeklyCheckListVBox, weeklyProgressLabel, weeklyProgressBar);
+        loadProgressTracking(Frequency.WEEKLY, weeklyTasksCompletedCount, weeklyTasksCount, weeklyProgressLabel, weeklyProgressBar);
+        loadHabitsChecklist(Frequency.WEEKLY, weeklyCheckListVBox, weeklyTasksCompletedCount, weeklyTasksCount, weeklyProgressLabel, weeklyProgressBar);
 
         /* Load monthly section tab */
         loadDateLabel(Frequency.MONTHLY, monthlyDateLabel);
-        loadHabitsChecklist(Frequency.MONTHLY, monthlyCheckListVBox, monthlyProgressLabel, monthlyProgressBar);
-
-
-        /*
-        /* Load daily section tab 
-        loadDailyDateLabel();
-        loadDailyHabitsChecklist();
-        loadDailyProgressTracking();
-
-        /* Load weekly section tab 
-        loadWeeklyDateLabel();
-        loadWeeklyHabitsChecklist();
-        loadWeeklyProgressTracking();
-        
-        /* Load monthly section tab 
-        loadMonthlyDateLabel();
-        loadMonthlyHabitsChecklist();
-        loadMonthlyProgressTracking();  
-        */
+        loadProgressTracking(Frequency.MONTHLY, monthlyTasksCompletedCount, monthlyTasksCount, monthlyProgressLabel, monthlyProgressBar);
+        loadHabitsChecklist(Frequency.MONTHLY, monthlyCheckListVBox, monthlyTasksCompletedCount, monthlyTasksCount, monthlyProgressLabel, monthlyProgressBar);
     }
 
     /** 
@@ -89,7 +76,7 @@ public class DashboardController {
      * 
      */
     
-    /* Display a date, with an style depending on the frequency, and to a specific label */
+    /* Display a date with an style depending on the frequency to a specific label */
     private void loadDateLabel(Frequency frequency, Label label) {
         LocalDate today = LocalDate.now();
 
@@ -108,7 +95,7 @@ public class DashboardController {
                 break;
 
             case MONTHLY:
-                label.setText(capitalize(today.getMonth().toString()) + today.getYear());
+                label.setText(capitalize(today.getMonth().toString()) + " " + today.getYear());
                 break;
         
             default:
@@ -117,39 +104,37 @@ public class DashboardController {
     }
 
     /* Automatically create a checklist to a specific VBox, filtering the habits depending on the frequency */
-    private void loadHabitsChecklist(Frequency frequency, VBox vbox, Label progressLabel, ProgressBar progressBar) {
+    private void loadHabitsChecklist(Frequency frequency, VBox vbox, AtomicInteger tasksCompletedCount, int tasksCount, Label progressLabel, ProgressBar progressBar) {
         vbox.getChildren().clear();
 
         for (Habit habit : HabitManager.getFilteredHabits(frequency)) {
             CheckBox cb = new CheckBox(habit.getName());
-
-            cb.selectedProperty().addListener((obs, oldVal, newVal) -> {updateProgressTracking(newVal, progressLabel, progressBar);});
+            cb.selectedProperty().addListener((obs, oldVal, newVal) -> {updateProgressTracking(newVal, tasksCompletedCount, tasksCount, progressLabel, progressBar);});
 
             VBox.setMargin(cb, new Insets(5, 0, 5, 0));
-
             vbox.getChildren().add(cb);
         }
     }
 
-    /* Resets progress tracking labels and variables */
-    private void loadDailyProgressTracking() {
-        dailyTasksCompletedCount = new AtomicInteger(0);
-        dailyTasksCount = HabitManager.listHabits().size();
+    /* Loads progress tracking labels and variables */
+    private void loadProgressTracking(Frequency frequency, AtomicInteger tasksCompletedCount, int tasksCount, Label progressLabel, ProgressBar progressBar) {
+        tasksCompletedCount = new AtomicInteger(0);
+        tasksCount = HabitManager.getFilteredHabits(frequency).size();
 
-        dailyProgressLabel.setText("0 / " + dailyTasksCount + " tasks completed");
-        dailyProgressBar.setProgress(0);
+        progressLabel.setText("0 / " + tasksCount + " tasks completed");
+        progressBar.setProgress(0);
     }
 
     /* Update daily progress tracking when a task checkbox is switched */
-    private void updateProgressTracking(boolean newVal, Label progressLabel, ProgressBar progressBar) {
+    private void updateProgressTracking(boolean newVal, AtomicInteger tasksCompletedCount, int tasksCount, Label progressLabel, ProgressBar progressBar) {
         if (newVal) {
-            dailyTasksCompletedCount.incrementAndGet();
+            tasksCompletedCount.incrementAndGet();
         } else {
-            dailyTasksCompletedCount.decrementAndGet();
+            tasksCompletedCount.decrementAndGet();
         }
 
-        dailyProgressLabel.setText(dailyTasksCompletedCount + " / " + dailyTasksCount + " tasks completed");
-        dailyProgressBar.setProgress((double) dailyTasksCompletedCount.get() / dailyTasksCount);
+        progressLabel.setText(tasksCompletedCount + " / " + tasksCount + " tasks completed");
+        progressBar.setProgress((double) tasksCompletedCount.get() / tasksCount);
     }
 
     /**

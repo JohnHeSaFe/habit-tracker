@@ -1,4 +1,5 @@
 com\john\habits\Main.class
+com\john\habits\controller\DashboardController$1.class
 com\john\habits\model\Habit.class
 com\john\habits\controller\DashboardController.class
 com\john\habits\model\Frequency.class
