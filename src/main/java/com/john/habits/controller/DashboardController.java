@@ -55,16 +55,22 @@ public class DashboardController {
     private void loadAllHabitsTabs() {
 
         /* Load daily section tab */
+        dailyTasksCompletedCount = new AtomicInteger(0);
+        dailyTasksCount = HabitManager.getFilteredHabits(Frequency.DAILY).size();
         loadDateLabel(Frequency.DAILY, dailyDateLabel);
         loadProgressTracking(Frequency.DAILY, dailyTasksCompletedCount, dailyTasksCount, dailyProgressLabel, dailyProgressBar);
         loadHabitsChecklist(Frequency.DAILY, dailyCheckListVBox, dailyTasksCompletedCount, dailyTasksCount, dailyProgressLabel, dailyProgressBar);
 
         /* Load weekly section tab */
+        weeklyTasksCompletedCount = new AtomicInteger(0);
+        weeklyTasksCount = HabitManager.getFilteredHabits(Frequency.WEEKLY).size();
         loadDateLabel(Frequency.WEEKLY, weeklyDateLabel);
         loadProgressTracking(Frequency.WEEKLY, weeklyTasksCompletedCount, weeklyTasksCount, weeklyProgressLabel, weeklyProgressBar);
         loadHabitsChecklist(Frequency.WEEKLY, weeklyCheckListVBox, weeklyTasksCompletedCount, weeklyTasksCount, weeklyProgressLabel, weeklyProgressBar);
 
         /* Load monthly section tab */
+        monthlyTasksCompletedCount = new AtomicInteger(0);
+        monthlyTasksCount = HabitManager.getFilteredHabits(Frequency.MONTHLY).size();
         loadDateLabel(Frequency.MONTHLY, monthlyDateLabel);
         loadProgressTracking(Frequency.MONTHLY, monthlyTasksCompletedCount, monthlyTasksCount, monthlyProgressLabel, monthlyProgressBar);
         loadHabitsChecklist(Frequency.MONTHLY, monthlyCheckListVBox, monthlyTasksCompletedCount, monthlyTasksCount, monthlyProgressLabel, monthlyProgressBar);
@@ -75,7 +81,7 @@ public class DashboardController {
      *  Methods to load all the elements of the tabs of habits 
      * 
      */
-    
+
     /* Display a date with an style depending on the frequency to a specific label */
     private void loadDateLabel(Frequency frequency, Label label) {
         LocalDate today = LocalDate.now();
@@ -118,9 +124,6 @@ public class DashboardController {
 
     /* Loads progress tracking labels and variables */
     private void loadProgressTracking(Frequency frequency, AtomicInteger tasksCompletedCount, int tasksCount, Label progressLabel, ProgressBar progressBar) {
-        tasksCompletedCount = new AtomicInteger(0);
-        tasksCount = HabitManager.getFilteredHabits(frequency).size();
-
         progressLabel.setText("0 / " + tasksCount + " tasks completed");
         progressBar.setProgress(0);
     }
