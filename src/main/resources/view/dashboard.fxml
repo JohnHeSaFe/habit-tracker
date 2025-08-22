@@ -19,7 +19,7 @@
    <left>
       <VBox prefHeight="800.0" prefWidth="800.0" BorderPane.alignment="CENTER">
          <children>
-            <TabPane prefHeight="521.0" prefWidth="760.0" tabClosingPolicy="UNAVAILABLE">
+            <TabPane prefHeight="429.0" prefWidth="760.0" tabClosingPolicy="UNAVAILABLE">
               <tabs>
                 <Tab text="Daily">
                      <content>
@@ -30,14 +30,14 @@
                                     <Font name="Segoe UI Black Italic" size="45.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="todayDateLabel" text="Wednesday, 7 August">
+                              <Label fx:id="dailyDateLabel" text="Wednesday, 7 August">
                                  <font>
                                     <Font name="Segoe UI" size="25.0" />
                                  </font>
                               </Label>
-                              <VBox fx:id="dailyCheckListVBox" prefHeight="237.0" prefWidth="720.0">
+                              <VBox fx:id="dailyCheckListVBox" prefHeight="300.0" prefWidth="1000.0">
                                  <VBox.margin>
-                                    <Insets top="10.0" />
+                                    <Insets bottom="10.0" top="10.0" />
                                  </VBox.margin>
                                  <children>
                                     <CheckBox mnemonicParsing="false" prefHeight="38.0" prefWidth="600.0" text="Do something">
@@ -45,7 +45,7 @@
                                           <Font size="14.0" />
                                        </font>
                                        <VBox.margin>
-                                          <Insets />
+                                          <Insets bottom="5" left="0" right="0" top="5" />
                                        </VBox.margin>
                                     </CheckBox>
                                     <CheckBox mnemonicParsing="false" prefHeight="38.0" prefWidth="600.0" text="Do something">
@@ -75,12 +75,16 @@
                                     </CheckBox>
                                  </children>
                               </VBox>
-                              <Label fx:id="dailyProgressLabel" prefHeight="35.0" prefWidth="246.0" text="0 / 6 tasks completed">
-                                 <font>
-                                    <Font size="24.0" />
-                                 </font>
-                              </Label>
-                              <ProgressBar fx:id="dailyProgressBar" prefHeight="40.0" prefWidth="294.0" progress="0.0" />
+                              <VBox alignment="CENTER" prefHeight="184.0" prefWidth="720.0">
+                                 <children>
+                                    <Label fx:id="dailyProgressLabel" prefHeight="35.0" prefWidth="229.0" text="0 / 6 tasks completed" textAlignment="CENTER">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <ProgressBar fx:id="dailyProgressBar" prefHeight="24.0" prefWidth="228.0" progress="0.0" />
+                                 </children>
+                              </VBox>
                            </children>
                            <padding>
                               <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
@@ -88,11 +92,150 @@
                         </VBox>
                      </content>
                 </Tab>
-                <Tab text="Weekly" />
-                  <Tab text="Untitled Tab" />
+                  <Tab text="Weekly">
+                     <content>
+                        <VBox prefHeight="333.0" prefWidth="760.0">
+                           <children>
+                              <Label prefHeight="66.0" prefWidth="428.0" text="This Week's Habits">
+                                 <font>
+                                    <Font name="Segoe UI Black Italic" size="45.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="weeklyDateLabel" text="Monday, 5 Aug – Sunday, 11 Aug">
+                                 <font>
+                                    <Font name="Segoe UI" size="25.0" />
+                                 </font>
+                              </Label>
+                              <VBox fx:id="weeklyCheckListVBox" prefHeight="300.0" prefWidth="1000.0">
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" top="10.0" />
+                                 </VBox.margin>
+                                 <children>
+                                    <CheckBox mnemonicParsing="false" prefHeight="38.0" prefWidth="600.0" text="Do something">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets bottom="5" left="0" right="0" top="5" />
+                                       </VBox.margin>
+                                    </CheckBox>
+                                    <CheckBox mnemonicParsing="false" prefHeight="38.0" prefWidth="600.0" text="Do something">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </CheckBox>
+                                    <CheckBox mnemonicParsing="false" prefHeight="38.0" prefWidth="600.0" text="Do something">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </CheckBox>
+                                    <CheckBox mnemonicParsing="false" prefHeight="38.0" prefWidth="600.0" text="Do something">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </CheckBox>
+                                    <CheckBox mnemonicParsing="false" prefHeight="38.0" prefWidth="600.0" text="Do something">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </CheckBox>
+                                    <CheckBox mnemonicParsing="false" prefHeight="38.0" prefWidth="600.0" text="Do something">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </CheckBox>
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER" prefHeight="184.0" prefWidth="720.0">
+                                 <children>
+                                    <Label fx:id="weeklyProgressLabel" prefHeight="35.0" prefWidth="229.0" text="0 / 6 tasks completed" textAlignment="CENTER">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <ProgressBar fx:id="weeklyProgressBar" prefHeight="24.0" prefWidth="228.0" progress="0.0" />
+                                 </children>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </padding>
+                        </VBox>
+                     </content>
+                  </Tab>
+                  <Tab text="Monthly">
+                     <content>
+                        <VBox prefHeight="333.0" prefWidth="760.0">
+                           <children>
+                              <Label prefHeight="66.0" prefWidth="449.0" text="This Month's Habits">
+                                 <font>
+                                    <Font name="Segoe UI Black Italic" size="45.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="monthlyDateLabel" text="August 2025">
+                                 <font>
+                                    <Font name="Segoe UI" size="25.0" />
+                                 </font>
+                              </Label>
+                              <VBox fx:id="monthlyCheckListVBox" prefHeight="300.0" prefWidth="1000.0">
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" top="10.0" />
+                                 </VBox.margin>
+                                 <children>
+                                    <CheckBox mnemonicParsing="false" prefHeight="38.0" prefWidth="600.0" text="Do something">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets bottom="5" left="0" right="0" top="5" />
+                                       </VBox.margin>
+                                    </CheckBox>
+                                    <CheckBox mnemonicParsing="false" prefHeight="38.0" prefWidth="600.0" text="Do something">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </CheckBox>
+                                    <CheckBox mnemonicParsing="false" prefHeight="38.0" prefWidth="600.0" text="Do something">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </CheckBox>
+                                    <CheckBox mnemonicParsing="false" prefHeight="38.0" prefWidth="600.0" text="Do something">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </CheckBox>
+                                    <CheckBox mnemonicParsing="false" prefHeight="38.0" prefWidth="600.0" text="Do something">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </CheckBox>
+                                    <CheckBox mnemonicParsing="false" prefHeight="38.0" prefWidth="600.0" text="Do something">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </CheckBox>
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER" prefHeight="184.0" prefWidth="720.0">
+                                 <children>
+                                    <Label fx:id="monthlyProgressLabel" prefHeight="35.0" prefWidth="229.0" text="0 / 6 tasks completed" textAlignment="CENTER">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <ProgressBar fx:id="monthlyProgressBar" prefHeight="24.0" prefWidth="228.0" progress="0.0" />
+                                 </children>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </padding>
+                        </VBox>
+                     </content>
+                  </Tab>
               </tabs>
             </TabPane>
-            <VBox prefHeight="170.0" prefWidth="760.0" />
          </children>
          <BorderPane.margin>
             <Insets />

@@ -9,6 +9,11 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+/* 
+ * Class to manage the actions for the database of the habits .
+ * Lets insert, get and remove habits.
+ * Also manages connecting and disconnecting from the database.
+ */
 public class HabitDAO {
     private static String url = "jdbc:sqlite:habits.db";
     private static Connection con;

@@ -10,6 +10,7 @@ public class HabitManager {
     static {
         dao.getAllHabits().forEach(h -> habits.put(h.getId(), h));
 
+        /* Test TODO */
         if (habits.isEmpty()) {
             Habit habit1 = new Habit("Drink water", Frequency.DAILY);
             Habit habit2 = new Habit("Read a book", Frequency.DAILY);
@@ -42,5 +43,19 @@ public class HabitManager {
 
     public static Collection<Habit> listHabits() {
         return habits.values();
+    }
+
+    /* Get a filtered list of habits depending on the frequency */
+    public static Collection<Habit> getFilteredHabits(Frequency frequency) {
+        HashMap<Integer, Habit> filteredHabits = new HashMap<>();
+        
+        habits.values().forEach(habit -> {
+            if (habit.getFrequency() == frequency) {
+                filteredHabits.put(habit.getId(), habit);
+            }
+        });
+        /* practicing lambdas xd */
+
+        return filteredHabits.values();
     }
 }
